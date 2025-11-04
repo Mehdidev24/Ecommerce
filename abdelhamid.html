@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Commit — Created by Abdelhamid</title>
+  <style>
+    :root{
+      --bg: #0f172a;
+      --card: #0b1220;
+      --muted: #9aa4b2;
+      --accent: #7c3aed;
+      --ok: #10b981;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(1000px 600px at 10% 10%, rgba(124,58,237,0.12), transparent 8%),
+        radial-gradient(800px 400px at 90% 90%, rgba(16,185,129,0.06), transparent 8%),
+        var(--bg);
+      color:#e6eef8;
+      padding:20px;
+    }
+
+    .card{
+      width:100%;
+      max-width:720px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:18px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+      display:grid;
+      gap:12px;
+    }
+
+    .row{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .avatar{
+      width:56px;height:56px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#4f46e5);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;font-size:18px;color:white;
+      flex-shrink:0;
+      box-shadow:0 6px 18px rgba(124,58,237,0.18);
+    }
+
+    .meta{
+      flex:1;
+      min-width:0;
+    }
+
+    .title{
+      display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    }
+
+    .commit-msg{
+      font-size:16px;font-weight:600;color:#f8fafc;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    }
+
+    .by{
+      font-size:13px;color:var(--muted);
+    }
+
+    .hash{
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+      background:var(--glass);padding:6px 8px;border-radius:8px;font-size:13px;color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .time{
+      font-size:13px;color:var(--muted);
+    }
+
+    .actions{
+      display:flex;gap:8px;
+    }
+
+    button{
+      background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit;padding:8px 10px;border-radius:8px;
+      cursor:pointer;font-weight:600;
+      transition:all .15s ease;
+    }
+    button:hover{transform:translateY(-2px)}
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent),#4f46e5);
+      border:none;color:white;
+      box-shadow:0 6px 18px rgba(79,70,229,0.18);
+    }
+
+    .details{
+      display:flex;gap:18px;align-items:center;flex-wrap:wrap;
+      padding-top:6px;border-top:1px dashed rgba(255,255,255,0.02);
+    }
+
+    .file{
+      background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:8px;font-weight:600;
+      display:flex;gap:10px;align-items:center;
+    }
+
+    .status{
+      padding:6px 8px;border-radius:999px;font-size:13px;font-weight:700;
+      background:rgba(16,185,129,0.12);color:var(--ok);border:1px solid rgba(16,185,129,0.08);
+    }
+
+    .toast{
+      position:fixed;right:20px;bottom:20px;padding:10px 14px;border-radius:10px;background:#0b1220;border:1px solid rgba(255,255,255,0.03);
+      box-shadow:0 6px 18px rgba(2,6,23,0.6);color:var(--ok);font-weight:700;display:none;
+    }
+
+    @media (max-width:520px){
+      .row{align-items:flex-start}
+      .avatar{width:48px;height:48px}
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="region" aria-label="Commit card">
+    <div class="row">
+      <div class="avatar" id="avatar">AH</div>
+
+      <div class="meta">
+        <div class="title">
+          <div class="commit-msg" id="commitMessage">Initial file: created abdelhamid.html</div>
+          <div class="hash" id="commitHash">a1b2c3d</div>
+        </div>
+        <div class="row" style="margin-top:6px;">
+          <div class="by">created by <strong>Abdelhamid</strong></div>
+          <div class="time" id="commitTime">— just now</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="copyBtn" title="Copy commit hash">Copy hash</button>
+        <button class="btn-primary" id="viewBtn">View file</button>
+      </div>
+    </div>
+
+    <div class="details">
+      <div class="file" title="file path">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="opacity:.9" xmlns="http://www.w3.org/2000/svg"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Ecommerce/abdelhamid.html</span>
+      </div>
+
+      <div class="status">added</div>
+      <div class="by" style="margin-left:auto">repo: <strong>Ecommerce</strong></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Hash copied!</div>
+
+  <script>
+    // Simple logic: generate a short pseudo-hash, format time, wire buttons
+    (function(){
+      const name = "Abdelhamid";
+      // initials
+      const initials = name.split(' ').map(s=>s[0]).slice(0,2).join('').toUpperCase();
+      document.getElementById('avatar').textContent = initials;
+
+      // pseudo hash generator (short)
+      function randHex(len){
+        const chars = 'abcdef0123456789';
+        let r=''; for(let i=0;i<len;i++) r += chars[Math.floor(Math.random()*chars.length)];
+        return r;
+      }
+      const hash = randHex(7);
+      document.getElementById('commitHash').textContent = hash;
+
+      // time: show human-friendly
+      function timeAgo(date){
+        const s = Math.floor((Date.now()-date)/1000);
+        if(s < 5) return 'just now';
+        if(s < 60) return s + 's ago';
+        const m = Math.floor(s/60);
+        if(m < 60) return m + 'm ago';
+        const h = Math.floor(m/60);
+        if(h < 24) return h + 'h ago';
+        const d = Math.floor(h/24);
+        return d + 'd ago';
+      }
+      const createdAt = Date.now() - Math.floor(Math.random()*60000); // within last minute
+      document.getElementById('commitTime').textContent = '— ' + timeAgo(createdAt);
+
+      // copy button
+      const copyBtn = document.getElementById('copyBtn');
+      copyBtn.addEventListener('click', async () => {
+        try{
+          await navigator.clipboard.writeText(hash);
+          showToast('Hash copied!');
+        }catch(e){
+          showToast('Unable to copy');
+        }
+      });
+
+      document.getElementById('viewBtn').addEventListener('click', () => {
+        alert('This file was created by Abdelhamid.\nFile: Ecommerce/abdelhamid.html\nCommit: ' + hash);
+      });
+
+      // toast
+      const toast = document.getElementById('toast');
+      let toastTimer = null;
+      function showToast(text){
+        if(toastTimer) clearTimeout(toastTimer);
+        toast.textContent = text;
+        toast.style.display = 'block';
+        toastTimer = setTimeout(()=>{ toast.style.display = 'none'; }, 1800);
+      }
+    })();
+  </script>
+</body>
+</html>
+
